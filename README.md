@@ -20,7 +20,8 @@ ADB (Android Debug Bridge) and Fastboot are part of the Android SDK Platform Too
    - Find and enable `USB Debugging`.
 
 3. **Disable Permission Monitoring:**
-   - In the same `Developer Options` menu, find and enable `Disable permission monitoring`.
+   - In `Developer Options`, find and enable `Disable permission monitoring`.
+   - In realme UI 5 this option is the last option in `Apps` menu section
 
 #### 3. **Connect Your Realme Device to Your Computer**
 
