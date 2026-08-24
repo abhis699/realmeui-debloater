@@ -1,54 +1,124 @@
-### A simple one click script to easily debloat Realme Ui 3/4/5
-### Step-by-Step Guide
+# Realme UI Debloater
 
-#### 1. **Install ADB and Fastboot (Platform Tools)**
+### A simple one-click ADB debloat script for Realme UI 3/4/5/6/7
 
-ADB (Android Debug Bridge) and Fastboot are part of the Android SDK Platform Tools. You need these tools to execute commands on your Realme device from your computer.
+This is a simple Windows `.bat` script designed to remove unnecessary/bloatware applications from Realme devices running Realme UI 3, 4, 5, 6 and 7.
 
-1. **Download Platform Tools:**
-   - Download the Platform Tools package from the [official Android developer website](https://developer.android.com/studio/releases/platform-tools).
-   - Extract the downloaded ZIP file to a convenient location on your computer. This folder contains `adb.exe`, `fastboot.exe`, and other necessary files.
+The script uses **ADB (Android Debug Bridge)** and does not require root access.
 
-#### 2. **Enable Developer Options, USB Debugging, and Disable Permission Monitoring on Your Realme Device**
+It provides both automatic and manual debloating options, along with tools to disable the Oppo/Realme App Market, restore important system apps, and export installed package names.
 
-1. **Enable Developer Options:**
-   - Go to `Settings > About phone > Version > Build number/Version number`.
-   - Tap on the `Build number/Version number` 7 times until you see a message that says "You are now a developer!"
+> **Note:** The package list is mainly designed for Realme/ColorOS-based devices. Package availability may vary depending on your device model, region, and Realme UI version.
 
-2. **Enable USB Debugging:**
-   - Go to `Settings > Additional Settings > Developer Options`.
-   - Find and enable `USB Debugging`.
+---
 
-3. **Disable Permission Monitoring:**
-   - In the same `Developer Options` menu, find and enable `Disable permission monitoring`.
+## Features
 
-#### 3. **Connect Your Realme Device to Your Computer**
+- One-click automatic debloating
+- Manual package removal
+- Removes unwanted pre-installed apps for the current Android user
+- Automatically tries to disable an app if uninstall fails
+- Creates a backup list of packages successfully removed/disabled
+- Disable Oppo/Realme App Market
+- Restore selected important system applications
+- Export all installed package names
+- No root required
+- Works through standard ADB commands
 
-1. Use a USB cable to connect your Realme device to your computer.
-2. When prompted on your device, select "Transfer files" or "File transfer" mode.
-3. If a dialog appears on your device asking to allow USB debugging, check "Always allow from this computer" and tap "OK."
+---
 
-#### 4. **Run the debloat.bat Script**
+# Step-by-Step Guide
 
-1. Place the `debloat.bat` file in the Platform Tools folder (the same folder where `adb.exe` is located).
-2. Double-click the `debloat.bat` file to run it.
+## 1. Install ADB and Fastboot (Platform Tools)
 
-#### 5. **Follow On-Screen Instructions**
+ADB (Android Debug Bridge) is required to communicate with your Android device from your computer.
 
-1. The script will prompt you to press `1` and Enter to start debloating. Type `1` and press Enter.
-2. The script will begin uninstalling the specified packages, displaying the name of each app as it is uninstalled. It will indicate whether the uninstallation was successful or if it failed.
+### Download Platform Tools
 
-### Troubleshooting
+Download the official Android SDK Platform Tools from:
 
-- **Device Not Recognized:**
-  - Ensure that USB debugging is enabled on your device.
-  - Check the USB connection mode on your device (should be in "Transfer files" or "File transfer" mode).
-  - Try using a different USB cable or port on your computer.
-  - Reinstall ADB drivers if necessary.
+https://developer.android.com/studio/releases/platform-tools
 
-- **Permission Issues:**
-  - Make sure to allow USB debugging permissions when prompted on your device.
-  - Run the Command Prompt as an administrator if you encounter permission issues.
+Extract the ZIP file to a convenient location.
 
-By following these steps, you should be able to successfully remove unwanted apps from your Realme device.
-Also this script only removes unneccessary apps, core apps which can cause crashes aren't removed.
+The folder should contain files such as:
+
+- `adb.exe`
+- `fastboot.exe`
+- `AdbWinApi.dll`
+- `AdbWinUsbApi.dll`
+
+---
+
+# 2. Enable Developer Options
+
+On your Realme phone:
+
+1. Open **Settings**
+2. Go to **About device / About phone**
+3. Open **Version**
+4. Find **Build number / Version number**
+5. Tap it **7 times**
+6. Enter your lock-screen password if requested
+
+You should now see a message indicating that Developer Options have been enabled.
+
+---
+
+# 3. Enable USB Debugging
+
+Go to:
+
+**Settings → Additional Settings → Developer Options**
+
+Enable:
+
+- **USB Debugging**
+
+On some Realme UI versions, the exact location/name may be slightly different.
+
+### Permission Monitoring
+
+Some Realme/ColorOS versions may also require:
+
+**Developer Options → Disable permission monitoring**
+
+Enable it if this option is available on your device.
+
+> This option is not present on every Realme UI version.
+
+---
+
+# 4. Connect Your Phone
+
+Connect your Realme phone to your PC using a USB cable.
+
+If USB connection options appear on your phone, select:
+
+**File Transfer / Android Auto**
+
+A popup should appear asking:
+
+> Allow USB debugging?
+
+Select:
+
+**Always allow from this computer**
+
+Then press **Allow / OK**.
+
+---
+
+# 5. Put the Script in the Platform Tools Folder
+
+Copy `debloat.bat` into the same folder where `adb.exe` is located.
+
+For example:
+
+```text
+platform-tools/
+├── adb.exe
+├── fastboot.exe
+├── AdbWinApi.dll
+├── AdbWinUsbApi.dll
+└── debloat.bat
