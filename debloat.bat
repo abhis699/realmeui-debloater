@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: CONFIG
 set "LOG=debloated_log_%date:~-4%-%date:~3,2%-%date:~0,2%.txt"
 set "BACKUP=removed_packages_backup.txt"
-set "TOTAL=91"
+set "TOTAL=85"
 
 :: ====== FULL BLOAT LIST ======
 set "packages[0]=com.glance.internet:Glance"
@@ -15,7 +15,7 @@ set "packages[4]=com.coloros.wifibackuprestore:ColorOS WiFi Backup Restore"
 set "packages[5]=com.coloros.activation:ColorOS Activation"
 set "packages[6]=com.coloros.athena:ColorOS Athena"
 set "packages[7]=com.coloros.backuprestore:ColorOS Backup Restore"
-set "packages[8]=com.coloros.childrenspace:ColorOS Children's Space"
+set "packages[8]=com.applovin.array.apphub.vincere:Vincere"
 set "packages[9]=com.realmecomm.app:Realme Community"
 set "packages[10]=com.oppo.bttestmode:Oppo BT Test Mode"
 set "packages[11]=com.oppo.operationManual:Oppo Operation Manual"
@@ -26,13 +26,13 @@ set "packages[15]=com.heytap.mcs:HeyTap MCS"
 set "packages[16]=com.heytap.openid:HeyTap OpenID"
 set "packages[17]=com.heytap.browser:HeyTap Browser"
 set "packages[18]=com.oppo.quicksearchbox:Oppo Quick Search Box"
-set "packages[19]=com.opos.cs:Oppo CS"
+set "packages[19]=com.microsoft.appmanager:Windows Link"
 set "packages[20]=com.oplus.crashbox:Oplus Crashbox"
 set "packages[21]=com.oplus.onetrace:Oplus Onetrace"
 set "packages[22]=com.coloros.logkit:ColorOS Logkit"
 set "packages[23]=com.heytap.usercenter:HeyTap User Center"
 set "packages[24]=com.heytap.synergy:HeyTap Synergy"
-set "packages[25]=com.coloros.encryption:ColorOS Encryption"
+set "packages[25]=com.oplus.omoji:Oplus Omoji"
 set "packages[26]=com.coloros.phonemanager:ColorOS Phone Manager"
 set "packages[27]=com.heytap.quickgame:HeyTap QuickGame"
 set "packages[28]=com.oplus.synergy:Oplus Synergy"
@@ -47,10 +47,10 @@ set "packages[36]=com.facebook.appmanager:Facebook App Manager"
 set "packages[37]=com.facebook.services:Facebook Services"
 set "packages[38]=com.facebook.system:Facebook System"
 set "packages[39]=com.facebook.katana:Facebook"
-set "packages[40]=com.mediatek.omacp:Mediatek OMACP"
+set "packages[40]=com.heytap.pictorial:HeyTap Pictorial"
 set "packages[41]=com.nearme.atlas:Nearme Atlas"
 set "packages[42]=com.nearme.statistics.rom:Nearme Statistics"
-set "packages[43]=com.wapi.wapicertmanage:WAPI Certificate Management"
+set "packages[43]=com.heytap.market:HeyTap Market"
 set "packages[44]=com.android.bookmarkprovider:Android Bookmark Provider"
 set "packages[45]=com.android.email.partnerprovider:Android Email Partner Provider"
 set "packages[46]=com.android.providers.partnerbookmarks:Android Partner Bookmarks Provider"
@@ -93,11 +93,6 @@ set "packages[82]=com.katanlabs.bubblepop:Bubble Pop"
 set "packages[83]=com.katanlabs.sandballsclassic:Sand Balls Classic"
 set "packages[84]=com.goods.master3d.triple.puzzle:Master 3D Triple Puzzle"
 set "packages[85]=com.katanlabs.wordconnectwondersofview:Word Connect Wonders"
-set "packages[86]=com.applovin.array.apphub.vincere:Vincere"
-set "packages[87]=com.heytap.market:HeyTap Market"
-set "packages[88]=com.heytap.pictorial:HeyTap Pictorial"
-set "packages[89]=com.microsoft.appmanager:Windows Link"
-set "packages[90]=com.oplus.omoji:Oplus Omoji"
 
 :: ====== IMPORTANT SYSTEM APPS ONLY ======
 set "important[0]=com.coloros.securitykeyboard"
@@ -130,7 +125,7 @@ cls
 echo =======================================
 echo REALME DEBLOATER V3.1
 echo =======================================
-echo 1. Auto Debloat [Full 91 apps]
+echo 1. Auto Debloat [Full 85 apps]
 echo 2. Manual Debloat [Enter package name]
 echo 3. Disable Oppo App Market [Fixed]
 echo 4. Reinstall Important System Apps Only
@@ -154,7 +149,7 @@ set /p confirm="Type Y to continue: "
 if /I not "%confirm%"=="Y" goto MENU
 echo. > %BACKUP%
 set /a count=0
-for /L %%i in (0,1,90) do (
+for /L %%i in (0,1,85) do (
     set /a count+=1
     for /F "tokens=1,2 delims=:" %%a in ("!packages[%%i]!") do (
         echo [!count!/%TOTAL%] %%b
