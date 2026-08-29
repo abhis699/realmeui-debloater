@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: CONFIG
 set "LOG=debloated_log_%date:~-4%-%date:~3,2%-%date:~0,2%.txt"
 set "BACKUP=removed_packages_backup.txt"
-set "TOTAL=85"
+set "TOTAL=93"
 
 :: ====== FULL BLOAT LIST ======
 set "packages[0]=com.glance.internet:Glance"
@@ -93,6 +93,13 @@ set "packages[82]=com.katanlabs.bubblepop:Bubble Pop"
 set "packages[83]=com.katanlabs.sandballsclassic:Sand Balls Classic"
 set "packages[84]=com.goods.master3d.triple.puzzle:Master 3D Triple Puzzle"
 set "packages[85]=com.katanlabs.wordconnectwondersofview:Word Connect Wonders"
+set "packages[86]=com.agoda.mobile.consumer:Agoda"
+set "packages[87]=com.katanlabs.matchballgame:Match Ball Game"
+set "packages[88]=com.katanlabs.worm.ioeatemall:Worm.io Eat Them All"
+set "packages[89]=com.katanlabs.tilematchpuzzlemaster:Tile Match Puzzle Master"
+set "packages[90]=com.vitastudio.mahjong:Mahjong"
+set "packages[91]=com.oakever.tiletrip:Tile Trip"
+set "packages[92]=com.nebula.mahjongtile:Mahjong Tile"
 
 :: ====== IMPORTANT SYSTEM APPS ONLY ======
 set "important[0]=com.coloros.securitykeyboard"
@@ -125,7 +132,7 @@ cls
 echo =======================================
 echo REALME DEBLOATER V3.1
 echo =======================================
-echo 1. Auto Debloat [Full 85 apps]
+echo 1. Auto Debloat [Full 93 apps]
 echo 2. Manual Debloat [Enter package name]
 echo 3. Disable Oppo App Market [Fixed]
 echo 4. Reinstall Important System Apps Only
@@ -147,22 +154,41 @@ echo.
 echo WARNING: This will remove %TOTAL% apps.
 set /p confirm="Type Y to continue: "
 if /I not "%confirm%"=="Y" goto MENU
-echo. > %BACKUP%
+
+> "%BACKUP%" echo.
 set /a count=0
-for /L %%i in (0,1,85) do (
+
+for /L %%i in (0,1,92) do (
     set /a count+=1
     for /F "tokens=1,2 delims=:" %%a in ("!packages[%%i]!") do (
+        echo.
         echo [!count!/%TOTAL%] %%b
+
         adb shell pm uninstall --user 0 %%a >nul 2>&1
-        if!errorlevel! equ 0 (
-            echo %%a>>%BACKUP%
+
+        if not errorlevel 1 (
+            echo     [SUCCESS] Successfully removed: %%b
+            >>"%BACKUP%" echo %%a
         ) else (
             adb shell pm disable-user --user 0 %%a >nul 2>&1
-            if!errorlevel! equ 0 echo %%a>>%BACKUP%
+
+            if not errorlevel 1 (
+                echo     [SUCCESS] Successfully disabled: %%b
+                >>"%BACKUP%" echo %%a
+            ) else (
+                echo     [FAILED] Could not remove/disable: %%b
+            )
         )
     )
 )
-echo Done.
+
+echo.
+echo =======================================
+echo Auto Debloat Complete.
+echo =======================================
+echo Successful removals/disables were saved to:
+echo %BACKUP%
+echo =======================================
 pause
 goto MENU
 
@@ -195,11 +221,11 @@ echo.
 set /p confirm="Continue? [Y/N]: "
 if /I not "%confirm%"=="Y" goto MENU
 for /L %%i in (0,1,16) do (
-    echo Restoring!important[%%i]!...
-    adb shell pm install-existing --user 0!important[%%i]! >nul 2>&1
-    adb shell cmd package install-existing!important[%%i]! >nul 2>&1
-    adb shell pm enable --user 0!important[%%i]! >nul 2>&1
-    adb shell pm unsuspend --user 0!important[%%i]! >nul 2>&1
+    echo Restoring !important[%%i]! ...
+    adb shell pm install-existing --user 0 !important[%%i]! >nul 2>&1
+    adb shell cmd package install-existing !important[%%i]! >nul 2>&1
+    adb shell pm enable --user 0 !important[%%i]! >nul 2>&1
+    adb shell pm unsuspend --user 0 !important[%%i]! >nul 2>&1
 )
 echo Important system apps restored.
 pause
