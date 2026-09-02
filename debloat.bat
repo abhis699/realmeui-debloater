@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: CONFIG
 set "LOG=debloated_log_%date:~-4%-%date:~3,2%-%date:~0,2%.txt"
 set "BACKUP=removed_packages_backup.txt"
-set "TOTAL=93"
+set "TOTAL=94"
 
 :: ====== FULL BLOAT LIST ======
 set "packages[0]=com.glance.internet:Glance"
@@ -100,6 +100,7 @@ set "packages[89]=com.katanlabs.tilematchpuzzlemaster:Tile Match Puzzle Master"
 set "packages[90]=com.vitastudio.mahjong:Mahjong"
 set "packages[91]=com.oakever.tiletrip:Tile Trip"
 set "packages[92]=com.nebula.mahjongtile:Mahjong Tile"
+set "packages[93]=com.oplus.stdsp:StdSP Core"
 
 :: ====== IMPORTANT SYSTEM APPS ONLY ======
 set "important[0]=com.coloros.securitykeyboard"
@@ -132,7 +133,7 @@ cls
 echo =======================================
 echo REALME DEBLOATER V3.1
 echo =======================================
-echo 1. Auto Debloat [Full 93 apps]
+echo 1. Auto Debloat [Full 94 apps]
 echo 2. Manual Debloat [Enter package name]
 echo 3. Disable Oppo App Market [Fixed]
 echo 4. Reinstall Important System Apps Only
@@ -158,7 +159,7 @@ if /I not "%confirm%"=="Y" goto MENU
 > "%BACKUP%" echo.
 set /a count=0
 
-for /L %%i in (0,1,92) do (
+for /L %%i in (0,1,93) do (
     set /a count+=1
     for /F "tokens=1,2 delims=:" %%a in ("!packages[%%i]!") do (
         echo.
