@@ -1,29 +1,32 @@
-# Realme UI Debloater
+# Realme UI / ColorOS / OxygenOS Debloater
 
-### A simple one-click ADB debloat script for Realme UI 3/4/5/6/7
+### A simple one-click ADB debloat script for Realme UI, ColorOS, and OxygenOS
 
-This is a simple Windows `.bat` script designed to remove unnecessary/bloatware applications from Realme devices running Realme UI 3, 4, 5, 6 and 7.
+This is a simple Windows `.bat` script designed to remove unnecessary bloatware applications from **Realme**, **OPPO**, and **OnePlus** devices running **Realme UI (2.0 - 7.0)**, **ColorOS (11 - 16)**, and **OxygenOS (11 - 16)**.
 
 The script uses **ADB (Android Debug Bridge)** and does not require root access.
 
 It provides both automatic and manual debloating options, along with tools to disable the Oppo/Realme App Market, restore important system apps, and export installed package names.
 
-> **Note:** The package list is mainly designed for Realme/ColorOS-based devices. Package availability may vary depending on your device model, region, and Realme UI version.
+> **Note:** Realme UI, ColorOS, and OxygenOS share the unified **OPlus / HeyTap** codebase (starting from Android 11). Package availability may vary depending on your device brand, model, region, and OS version.
 
 ---
 
 ## Features
 
-- One-click automatic debloating
-- Manual package removal
-- Removes unwanted pre-installed apps for the current Android user
-- Automatically tries to disable an app if uninstall fails
-- Creates a backup list of packages successfully removed/disabled
-- Disable Oppo/Realme App Market
-- Restore selected important system applications
-- Export all installed package names
+- One-click automatic debloating (94 user-tested bloatware packages)
+- Smart package status detection (`[REMOVED]`, `[DISABLED]`, `[SKIPPED / NOT PRESENT]`, `[FAILED]`)
+- One-click **Restore ALL from Backup** (complete undo feature)
+- Manual package removal and manual package restore by package name
+- Safe removal for current user (`pm uninstall --user 0`) with automatic disable fallback
+- Creates detailed log and backup files (`removed_packages_backup.txt` and `debloat_log.txt`)
+- One-click disable & re-enable tool for Oppo / HeyTap App Market
+- Reinstall/restore selected essential system applications (Notes, Security Keyboard, OShare, Video, etc.)
+- Live connected device info (Brand, Model, Android & Build version)
+- Device reboot tool
+- Export all installed package names to `installed_packages.txt`
 - No root required
-- Works through standard ADB commands
+- Works through standard ADB commands across Realme, OPPO, and OnePlus devices
 
 ---
 
@@ -35,11 +38,11 @@ ADB (Android Debug Bridge) is required to communicate with your Android device f
 
 ### Download Platform Tools
 
-Download the official Android SDK Platform Tools from:
+Download official Android SDK Platform Tools from:
 
 https://developer.android.com/studio/releases/platform-tools
 
-Extract the ZIP file to a convenient location.
+Extract the ZIP file to a convenient location on your PC.
 
 The folder should contain files such as:
 
@@ -50,68 +53,51 @@ The folder should contain files such as:
 
 ---
 
-# 2. Enable Developer Options
+## 2. Enable Developer Options
 
-On your Realme phone:
+On your Realme / OPPO / OnePlus phone:
 
 1. Open **Settings**
 2. Go to **About device / About phone**
-3. Open **Version**
+3. Open **Version** (or **Software information**)
 4. Find **Build number / Version number**
-5. Tap it **7 times**
-6. Enter your lock-screen password if requested
+5. Tap it **7 times** consecutively
+6. Enter your lock-screen PIN/password when prompted
 
-You should now see a message indicating that Developer Options have been enabled.
-
----
-
-# 3. Enable USB Debugging
-
-Go to:
-
-**Settings → Additional Settings → Developer Options**
-
-Enable:
-
-- **USB Debugging**
-
-On some Realme UI versions, the exact location/name may be slightly different.
-
-### Permission Monitoring
-
-Some Realme/ColorOS versions may also require:
-
-**Developer Options → Disable permission monitoring**
-
-Enable it if this option is available on your device.
-
-> This option is not present on every Realme UI version.
+You will see a notification confirming: *"You are now in Developer mode!"*
 
 ---
 
-# 4. Connect Your Phone
+## 3. Enable USB Debugging
 
-Connect your Realme phone to your PC using a USB cable.
+1. Go to:
+   - **Realme / OPPO:** **Settings → Additional Settings (or System Settings) → Developer Options**
+   - **OnePlus:** **Settings → System Settings (or Additional Settings) → Developer Options**
+2. Enable **USB Debugging**.
 
-If USB connection options appear on your phone, select:
+### Disable Permission Monitoring (If Applicable)
 
-**File Transfer / Android Auto**
+On some Realme UI / ColorOS / OxygenOS builds, you may also need to toggle:
 
-A popup should appear asking:
+**Developer Options → Disable permission monitoring** (Turn ON)
 
-> Allow USB debugging?
-
-Select:
-
-**Always allow from this computer**
-
-Then press **Allow / OK**.
+> *Note: If this setting is not visible on your specific model or OS version, you can safely skip it.*
 
 ---
 
-# 5. Put the Script in the Platform Tools Folder
+## 4. Connect Your Phone
 
-Copy `debloat.bat` into the same folder where `adb.exe` is located.
+1. Connect your phone to your PC via a USB data cable.
+2. If USB connection prompt appears on the phone, select **File Transfer / Android Auto**.
+3. A popup will appear on your phone asking:
+   > **Allow USB debugging?**
+4. Check **Always allow from this computer** and tap **Allow / OK**.
+
+---
+
+## 5. Put the Script in the Platform Tools Folder
+
+Copy `debloat.bat` directly into your extracted `platform-tools` folder (where `adb.exe` is located).
 
 For example:
 
@@ -122,3 +108,11 @@ platform-tools/
 ├── AdbWinApi.dll
 ├── AdbWinUsbApi.dll
 └── debloat.bat
+```
+
+---
+
+## 6. Run the Debloater
+
+1. Double-click `debloat.bat` to launch the interactive menu.
+2. Select **Option 1** for automatic debloating or use the menu options as needed.
