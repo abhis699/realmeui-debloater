@@ -6,7 +6,7 @@ title Realme UI / ColorOS / OxygenOS Debloater
 set "BACKUP=removed_packages_backup.txt"
 set "LOG=debloat_log.txt"
 
-:: ====== FULL BLOAT LIST (94 Packages) ======
+:: ====== FULL BLOAT LIST (95 Packages) ======
 set "packages[0]=com.glance.internet:Glance Lockscreen"
 set "packages[1]=com.realmestore.app:Realme Store"
 set "packages[2]=com.coloros.securitykeyboard:ColorOS Security Keyboard"
@@ -101,6 +101,7 @@ set "packages[90]=com.vitastudio.mahjong:Mahjong"
 set "packages[91]=com.oakever.tiletrip:Tile Trip"
 set "packages[92]=com.nebula.mahjongtile:Mahjong Tile"
 set "packages[93]=com.oplus.stdsp:StdSP Core"
+set "packages[94]=com.taboola.scoop:Wallpaper Carousel"
 
 :: ====== IMPORTANT SYSTEM APPS (17 Packages) ======
 set "important[0]=com.coloros.securitykeyboard:ColorOS Security Keyboard"
@@ -121,7 +122,7 @@ set "important[14]=com.android.bookmarkprovider:Android Bookmark Provider"
 set "important[15]=com.android.providers.partnerbookmarks:Android Partner Bookmarks Provider"
 set "important[16]=com.android.email.partnerprovider:Android Email Partner Provider"
 
-set "TOTAL_BLOAT=94"
+set "TOTAL_BLOAT=95"
 set /a LAST_BLOAT_IDX=TOTAL_BLOAT-1
 
 set "TOTAL_IMP=17"

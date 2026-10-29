@@ -14,7 +14,7 @@ It provides both automatic and manual debloating options, along with tools to di
 
 ## Features
 
-- One-click automatic debloating (94 user-tested bloatware packages)
+- One-click automatic debloating (95 user-tested bloatware packages)
 - Smart package status detection (`[REMOVED]`, `[DISABLED]`, `[SKIPPED / NOT PRESENT]`, `[FAILED]`)
 - One-click **Restore ALL from Backup** (complete undo feature)
 - Manual package removal and manual package restore by package name
